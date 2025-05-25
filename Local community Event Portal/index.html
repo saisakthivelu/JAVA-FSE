@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS for welcome banner -->
+    <style>
+        #welcomeBanner {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body onbeforeunload="return checkFormCompletion()">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Community Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="help.html" target="_blank">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Welcome Banner -->
+        <div id="welcomeBanner">
+            <h1>Welcome to Community Events Portal</h1>
+            <span style="color: red; font-weight: bold;">Special Offer: Early bird registration available!</span>
+        </div>
+
+        <!-- Home Section -->
+        <section id="home" class="mb-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="highlight">Discover Local Events</h2>
+                    <p class="lead">Join your community and participate in exciting local events. Register easily and stay connected!</p>
+                    <button class="btn btn-success" onclick="findNearbyEvents()">
+                        <i class="bi bi-geo-alt"></i> Find Nearby Events
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <!-- Video Section -->
+                    <video controls style="width: 100%; max-width: 400px;" oncanplay="showVideoReady()">
+                        <source src="event-promo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div id="videoStatus" class="alert alert-info d-none">Video ready to play!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="mb-5">
+            <h2 class="text-center mb-4">Community Events</h2>
+            
+            <!-- Event Filter -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <select class="form-select" id="eventTypeFilter" onchange="showEventFee(this.value)">
+                        <option value="">Select Event Type</option>
+                        <option value="workshop" data-fee="25">Workshop</option>
+                        <option value="seminar" data-fee="15">Seminar</option>
+                        <option value="festival" data-fee="10">Festival</option>
+                        <option value="sports" data-fee="20">Sports</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div id="eventFee" class="alert alert-info d-none">Event Fee: $<span id="feeAmount">0</span></div>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Past Events Gallery</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <caption>Community Event Highlights</caption>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/1330424071/photo/large-group-of-people-at-a-concert-party.jpg?s=1024x1024&w=is&k=20&c=conViIiS9YY2UVDJgq-vO02rTiu0JuzJTzYDLUMZQiI="
+                                         alt="Music Festival" title="Annual Music Festival" 
+                                         class="event-image img-fluid rounded" 
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Music Festival</p>
+                                </td>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/1087391494/photo/food-trucks-and-people-at-a-street-food-market-festival-on-a-sunny-day.jpg?s=1024x1024&w=is&k=20&c=XZfJUTewcKb25IlqibhOThD4CEzSPOqsbq9GNtUXAeY="
+                                         alt="Food Fair" title="Community Food Fair" 
+                                         class="event-image img-fluid rounded"
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Food Fair</p>
+                                </td>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/2178692828/photo/various-sports-equipment-on-black-background-studio-shot.jpg?s=1024x1024&w=is&k=20&c=pk2I0uvNoHFSLOo-wDydyevMEovpDGXgZ2_yLCGjXhA=" 
+                                         alt="Sports Day" title="Annual Sports Day" 
+                                         class="event-image img-fluid rounded"
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Sports Day</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/1351066996/photo/people-creating-pottery-in-studio-top-view.jpg?s=1024x1024&w=is&k=20&c=QltMJtwRd9rBvxeUTaVuccr-EMeNlvb8ZQu3O3QNfms=" 
+                                         alt="Art Workshop" title="Creative Art Workshop" 
+                                         class="event-image img-fluid rounded"
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Art Workshop</p>
+                                </td>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/1371160686/photo/business-people-watching-a-presentation-on-the-whiteboard.jpg?s=1024x1024&w=is&k=20&c=VO2GaG_IIApOX_Jxs-awMPKR6WmB0UXJdyK_U8wbRLQ=" 
+                                         alt="Tech Seminar" title="Technology Seminar" 
+                                         class="event-image img-fluid rounded"
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Tech Seminar</p>
+                                </td>
+                                <td>
+                                    <img src="https://media.istockphoto.com/id/2148803754/photo/old-used-books-hardback-books-close-up.jpg?s=1024x1024&w=is&k=20&c=nNEpVQ3Rklayoy8V2-pZuSaSiLrR5DKFfJoQ7u04BeM=" 
+                                         alt="Book Club" title="Monthly Book Club" 
+                                         class="event-image img-fluid rounded"
+                                         ondblclick="enlargeImage(this)">
+                                    <p class="mt-2 text-center">Book Club</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Event Registration Form -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Event Registration</h3>
+                </div>
+                <div class="card-body">
+                    <form id="registrationForm" onsubmit="submitForm(event)">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="userName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="userName" name="userName" 
+                                       placeholder="Enter your full name" required autofocus>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="userEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail" 
+                                       placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" 
+                                       placeholder="Enter phone number" onblur="validatePhone(this.value)">
+                                <div id="phoneError" class="text-danger d-none">Please enter a valid phone number</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="eventDate" class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="eventType" class="form-label">Event Type</label>
+                                <select class="form-select" id="eventType" name="eventType" required>
+                                    <option value="">Choose event type</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="seminar">Seminar</option>
+                                    <option value="festival">Festival</option>
+                                    <option value="sports">Sports Event</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <button type="button" class="btn btn-secondary mt-4" onclick="clearPreferences()">
+                                    Clear Preferences
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feedbackMessage" class="form-label">Additional Message</label>
+                            <textarea class="form-control" id="feedbackMessage" name="feedbackMessage" 
+                                      rows="4" placeholder="Any special requirements or feedback..."
+                                      onkeyup="countCharacters(this)"></textarea>
+                            <div id="charCount" class="form-text">Characters: 0</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="showConfirmation()">
+                            <i class="bi bi-check-circle"></i> Register for Event
+                        </button>
+                    </form>
+                    
+                    <output id="confirmationMessage" class="alert alert-success d-none mt-3">
+                        Registration submitted successfully!
+                    </output>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Contact Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>City Council Office</h4>
+                            <p><i class="bi bi-geo-alt"></i> Beach Street,Chennai</p>
+                            <p><i class="bi bi-telephone"></i> (+91) 9876543210</p>
+                            <p><i class="bi bi-envelope"></i> events@chennai.com</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            <p>Saturday: 10:00 AM - 2:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Local Community Event Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Event Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="enlargedImage" src="" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
