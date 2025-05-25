@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Exercise 1.1: Bootstrap 5 CDN Setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Portal - Bootstrap 5 Components</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --bs-primary: #007BFF;
+      --bs-border-radius: 0.5rem;
+    }
+    .custom-primary {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Exercise 10.1: Responsive Navbar with Search -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="bi bi-calendar-event me-2"></i> Community Portal
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Registration</a></li>
+              <li><a class="dropdown-item" href="#">Feedback</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search events...">
+          <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <!-- Exercise 3.1: Grid Columns -->
+    <h1 class="display-1 text-center mb-5">Bootstrap 5 Component Showcase</h1>
+    <div class="row mb-5">
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <div class="card h-100"><div class="card-body"><h5 class="card-title">Column 1</h5><p class="card-text">Stacks on mobile, 2/tablet, 3/desktop.</p></div></div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <div class="card h-100"><div class="card-body"><h5 class="card-title">Column 2</h5><p class="card-text">Responsive grid using Bootstrap classes.</p></div></div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <div class="card h-100"><div class="card-body"><h5 class="card-title">Column 3</h5><p class="card-text">Great for event categories.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Exercise 4.1: Sidebar Layout -->
+    <div class="row mb-5">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header bg-primary text-white"><h3>Main Content Area</h3></div>
+          <div class="card-body">
+            <!-- Exercise 7.1: Typography -->
+            <p class="lead">Lead paragraph</p>
+            <p class="text-muted">Muted text</p>
+            <p class="fw-bold">Bold</p>
+            <p class="text-uppercase">uppercase</p>
+            <p class="text-lowercase">LOWERCASE</p>
+            <p class="text-capitalize">capitalize sentence</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header bg-secondary text-white"><h4>Sidebar</h4></div>
+          <div class="card-body">
+            <p>Only shows on tablets and above</p>
+            <!-- Exercise 14.1: Display Utilities -->
+            <div class="d-none d-md-block"><p class="small">Tablet & up</p></div>
+            <div class="d-lg-flex d-none justify-content-center"><span class="badge bg-success">Large screen</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 5.2: Reorder columns -->
+    <div class="row justify-content-center align-items-center mb-5" style="min-height: 200px;">
+      <div class="col-md-4 order-md-2 mb-3">
+        <div class="card bg-warning text-center"><div class="card-body"><h5>First on Mobile</h5></div></div>
+      </div>
+      <div class="col-md-4 order-md-1 mb-3">
+        <div class="card bg-info text-white text-center"><div class="card-body"><h5>Second on Mobile</h5></div></div>
+      </div>
+    </div>
+
+    <!-- Exercise 6.1: Flexbox Utilities -->
+    <div class="card mb-5">
+      <div class="card-header"><h3>Flexbox Utilities Demo</h3></div>
+      <div class="card-body">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center p-3 bg-light rounded">
+          <div class="mb-2 mb-md-0">
+            <h5 class="mb-0">Event Title</h5>
+            <small class="text-muted">Event Description</small>
+          </div>
+          <div class="d-flex gap-2">
+            <span class="badge bg-primary">Premium</span>
+            <span class="badge bg-success">Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 8: Forms -->
+    <div class="row mb-5">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header"><h3>Registration Form</h3></div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="regName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="regName" required>
+              </div>
+              <div class="mb-3">
+                <label for="regEmail" class="form-label">Email</label>
+                <div class="input-group">
+                  <span class="input-group-text">@</span>
+                  <input type="email" class="form-control" id="regEmail" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="eventSelect" class="form-label">Select Event</label>
+                <select class="form-select" id="eventSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Music Festival</option>
+                  <option value="2">Art Workshop</option>
+                  <option value="3">Tech Seminar</option>
+                </select>
+              </div>
+              <div class="mb-3 form-check">
+                <input class="form-check-input" type="checkbox" id="newsletter">
+                <label class="form-check-label" for="newsletter">Subscribe to newsletter</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise 8.2: Login Form with Floating Labels -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header"><h3>Login</h3></div>
+          <div class="card-body">
+            <form>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="email@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button type="submit" class="btn btn-success">Sign In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 18: Modal and Accordion -->
+    <div class="text-center mb-5">
+      <button class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#infoModal">Open Modal</button>
+    </div>
+
+    <div class="modal fade" id="infoModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Portal Info</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            This portal connects residents with local events and services.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion mb-5" id="eventAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+            What events are available?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            Music shows, tech workshops, sports events and more!
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer & Icons -->
+  <footer class="bg-dark text-white text-center p-3 position-fixed bottom-0 w-100">
+    &copy; 2025 Local Community Portal
+  </footer>
+  <div class="bg-light py-4 text-center">
+    <a href="#" class="text-dark me-3"><i class="bi bi-facebook fs-3"></i></a>
+    <a href="#" class="text-dark me-3"><i class="bi bi-twitter fs-3"></i></a>
+    <a href="#" class="text-dark"><i class="bi bi-instagram fs-3"></i></a>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
